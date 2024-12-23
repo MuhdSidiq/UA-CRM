@@ -18,11 +18,12 @@
     "RUN chown -R www-data:www-data /var/www/html",
     "WORKDIR /var/www/html",
     "RUN composer install --no-interaction --no-dev --optimize-autoloader",
+    "RUN php artisan migrate --force",
     "RUN php artisan storage:link",
     "RUN php artisan config:cache",
     "RUN php artisan route:cache",
     "RUN php artisan view:cache",
     "EXPOSE 80",
-    "CMD ["/bin/bash", "-c", "service nginx start && php-fpm"]"
+    "CMD [\"/bin/bash\", \"-c\", \"service nginx start && php-fpm\"]"
   ]
 }
