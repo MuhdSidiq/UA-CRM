@@ -24,6 +24,10 @@ nginx
 echo "[$(date)] Running migrations..."
 php artisan migrate --force || true
 
+# Run seeders (ignore errors)
+echo "[$(date)] Running seeders..."
+php artisan db:seed --force || true
+
 # Start PHP-FPM
 echo "[$(date)] Starting PHP-FPM..."
 exec php-fpm --nodaemonize
