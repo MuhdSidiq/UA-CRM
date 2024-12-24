@@ -20,10 +20,10 @@ done
 echo "[$(date)] Starting nginx..."
 nginx
 
-# Run migrations after MySQL is available
+# Run migrations (ignore errors)
 echo "[$(date)] Running migrations..."
-php artisan migrate --force
+php artisan migrate --force || true
 
-# Start PHP-FPM in foreground
+# Start PHP-FPM
 echo "[$(date)] Starting PHP-FPM..."
 exec php-fpm --nodaemonize
