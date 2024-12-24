@@ -32,12 +32,13 @@
     "ENV APP_DEBUG=true",
     "ENV DISPLAY_DEBUG_BACKTRACE=true",
     "RUN php artisan config:clear",
-    "RUN php artisan migrate --force",
     "RUN php artisan storage:link",
     "RUN php artisan config:cache",
     "RUN php artisan route:cache",
     "RUN php artisan view:cache",
     "EXPOSE 80",
-    "CMD [\"/bin/bash\", \"-c\", \"service nginx start && php-fpm\"]"
+    "COPY docker/startup.sh /startup.sh",
+    "RUN chmod +x /startup.sh",
+    "CMD [\"/startup.sh\"]"
   ]
 }
