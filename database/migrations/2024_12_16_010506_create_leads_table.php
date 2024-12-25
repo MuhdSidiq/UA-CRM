@@ -29,12 +29,6 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 
-            $table->index('account_id', 'idx_account');
-            $table->index('status', 'idx_status');
-            $table->index(['first_message_date', 'last_message_date'], 'idx_dates');
-            $table->foreign('account_id')
-                ->references('id')
-                ->on('accounts');
         });
     }
 
@@ -43,7 +37,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-
+        Schema::dropIfExists('leads');
 
     }
 
