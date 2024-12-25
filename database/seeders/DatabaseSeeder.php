@@ -2,13 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\ChatLog;
-use App\Models\ChatStatusLog;
-use App\Models\Lead;
-use App\Models\LeadMeta;
-use App\Models\TelegramAccount;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -37,8 +31,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($users as $userData) {
-            User::factory()->create($userData);
+            User::create($userData);
         }
-
     }
 }
