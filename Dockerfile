@@ -33,6 +33,9 @@ WORKDIR /var/www/html
 # Copy application files
 COPY . .
 
+# Create env file from example
+RUN cp .env.example .env
+
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
@@ -45,10 +48,6 @@ RUN php artisan storage:link
 # Install and build frontend assets
 RUN npm install
 RUN npm run build
-
-# Note: migrate:fresh --seed should NOT go in Dockerfile
-# Run it manually after first deploy:
-# php artisan migrate:fresh --seed --force
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
