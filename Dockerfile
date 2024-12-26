@@ -45,9 +45,6 @@ RUN php artisan key:generate --force
 # Create storage link
 RUN php artisan storage:link
 
-# Run migration
-RUN php artisan migrate
-
 # Install and build frontend assets
 RUN npm install
 RUN npm run build
