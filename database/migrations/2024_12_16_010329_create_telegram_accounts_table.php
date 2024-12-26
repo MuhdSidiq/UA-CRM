@@ -20,7 +20,7 @@ return new class extends Migration
             $table->boolean('is_active')->default(false);
             $table->timestamp('last_connected')->nullable();
             $table->string('temp_code_hash', 255)->nullable();
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamps();
         });
     }
 
