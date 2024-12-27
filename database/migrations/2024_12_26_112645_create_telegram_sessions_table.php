@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('telegram_sessions', function (Blueprint $table) {
             $table->id();
-            $table->integer('telegram_account_id');
+            $table->integer('telegram_account_id')->constrained('telegram_accounts')
+                ->onDelete('cascade');;
             $table->text('session_string');
             $table->timestamps();
 

@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('leads', function (Blueprint $table) {
             $table->id();
             $table->integer('telegram_account_id')->nullable();
-            $table->string('telegram_chat_id')->nullable();
+            $table->bigInteger('telegram_chat_id')->nullable();
             $table->string('telegram_username')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('country')->nullable();
             $table->enum('status', ['new', 'f1', 'f2', '50D', 'close', 'cold lead'])->default('new');
-            $table->string('username')->nullable();
+            $table->string('username')->nullable(); // is for platform username
             $table->string('platform')->nullable();
             $table->timestamp('first_message_date')->nullable();
             $table->timestamp('last_message_date')->nullable();
