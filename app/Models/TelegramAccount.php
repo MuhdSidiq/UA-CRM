@@ -19,8 +19,13 @@ class TelegramAccount extends Model
         'status',
     ];
 
-    public function leads(): HasMany
+    public function leads()
     {
-        return $this->hasMany(Lead::class);
+        return $this->hasMany(Lead::class, 'telegram_account_id');
+    }
+
+    public function chats()
+    {
+        return $this->hasMany(Chat::class, 'telegram_account_id');
     }
 }

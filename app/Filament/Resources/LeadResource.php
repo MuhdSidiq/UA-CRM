@@ -57,12 +57,10 @@ class LeadResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('telegram_account_id')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('telegramAccount.name')
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('telegram_chat_id')
-                    ->numeric()
-                    ->sortable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('telegram_username')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('name')
@@ -79,17 +77,17 @@ class LeadResource extends Resource
                 Tables\Columns\TextColumn::make('platform')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('first_message_date')
-                    ->dateTime()
+                    ->dateTime('dd/mm/yy')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('last_message_date')
-                    ->dateTime()
+                    ->dateTime('dd/mm/yy')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                    ->dateTime('dd/mm/yy')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->dateTime('dd/mm/yy')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
