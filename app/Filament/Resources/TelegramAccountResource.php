@@ -18,7 +18,8 @@ class TelegramAccountResource extends Resource
 {
     protected static ?string $model = TelegramAccount::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-plus';
+
 
     public static function form(Form $form): Form
     {
@@ -59,8 +60,8 @@ class TelegramAccountResource extends Resource
                 Tables\Columns\TextColumn::make('session_data')
                     ->disabled()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\IconColumn::make('status')
-                    ->boolean(),
+                Tables\Columns\TextColumn::make('status')
+                     ->badge(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
