@@ -71,23 +71,20 @@ class LeadResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('country')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('status'),
-                Tables\Columns\TextColumn::make('username')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('platform')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('username'),
+                Tables\Columns\TextColumn::make('platform'),
                 Tables\Columns\TextColumn::make('first_message_date')
-                    ->dateTime('dd/mm/yy')
+                    ->dateTime('d/m/y')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('last_message_date')
-                    ->dateTime('dd/mm/yy')
+                    ->dateTime('d/m/y')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime('dd/mm/yy')
+                    ->dateTime('d/m/y')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime('dd/mm/yy')
+                    ->dateTime('d/m/y')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
