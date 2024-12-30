@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\LeadResource\Pages;
 
 use App\Filament\Resources\LeadResource;
+use DB;
 use Filament\Resources\Components\Tab;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Table;
@@ -13,19 +14,13 @@ class ListLeads extends ListRecords
 {
     protected static string $resource = LeadResource::class;
 
-    protected function getLeadCounts(): array
+    public function getLeadCounts(): array
     {
-        return Cache::remember('lead_counts_current_month', now()->addMinutes(5), function () {
-            return $this->getModel()::query()
-                ->whereBetween('created_at', [
-                    now()->startOfMonth(),
-                    now()->endOfMonth()
-                ])
-                ->selectRaw('status, COUNT(*) as count')
-                ->groupBy('status')
-                ->pluck('count', 'status')
-                ->toArray();
-        });
+        return DB::table('leads')
+            ->select('status', DB::raw('count(*) as count'))
+            ->groupBy('status')
+            ->pluck('count', 'status')
+            ->toArray();
     }
 
     public function getTabs(): array
