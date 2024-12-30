@@ -88,7 +88,7 @@ class LeadResource extends Resource
                     ->dateTime('d/m/y')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-            ])
+            ])->defaultSort('created_at', 'desc')
             ->filters([
                 //
             ])
