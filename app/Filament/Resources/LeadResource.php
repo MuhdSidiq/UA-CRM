@@ -76,17 +76,17 @@ class LeadResource extends Resource
                 Tables\Columns\TextColumn::make('username'),
                 Tables\Columns\TextColumn::make('platform'),
                 Tables\Columns\TextColumn::make('first_message_date')
-                    ->dateTime('d/m/Y, h:ia')
+                    ->dateTime('d/m/Y, h:i A')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('last_message_date')
-                    ->dateTime('d/m/Y, h:ia')
+                    ->dateTime('d/m/Y, h:i A')
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime('d/m/Y, h:ia')
+                    ->dateTime('d/m/Y, h:i A')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime('d/m/Y, h:ia')
+                    ->dateTime('d/m/Y, h:i A')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])->defaultSort('created_at', 'desc')
