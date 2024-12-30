@@ -59,7 +59,8 @@ class LeadResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('telegramAccount.name')
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('telegram_chat_id')
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('telegram_username')
@@ -75,17 +76,17 @@ class LeadResource extends Resource
                 Tables\Columns\TextColumn::make('username'),
                 Tables\Columns\TextColumn::make('platform'),
                 Tables\Columns\TextColumn::make('first_message_date')
-                    ->dateTime('d/m/y - H:I')
+                    ->dateTime('d/m/Y, h:ia')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('last_message_date')
-                    ->dateTime('d/m/y - H:I')
-                    ->sortable(),
+                    ->dateTime('d/m/Y, h:ia')
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime('d/m/y')
+                    ->dateTime('d/m/Y, h:ia')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime('d/m/y')
+                    ->dateTime('d/m/Y, h:ia')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])->defaultSort('created_at', 'desc')
