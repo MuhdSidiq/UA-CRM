@@ -75,10 +75,10 @@ class LeadResource extends Resource
                 Tables\Columns\TextColumn::make('username'),
                 Tables\Columns\TextColumn::make('platform'),
                 Tables\Columns\TextColumn::make('first_message_date')
-                    ->dateTime('d/m/y')
+                    ->dateTime('d/m/y - H:I')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('last_message_date')
-                    ->dateTime('d/m/y')
+                    ->dateTime('d/m/y - H:I')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('d/m/y')
