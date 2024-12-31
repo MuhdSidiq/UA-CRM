@@ -26,6 +26,7 @@ class TelegramChannelPerformance extends BaseWidget
                         'telegram_account_id',
                         DB::raw('COUNT(*) as total_leads'),
                         DB::raw('COUNT(DISTINCT telegram_chat_id) as unique_chats'),
+                        DB::raw('SUM(CASE WHEN status = "closed" THEN 1 ELSE 0 END) as closed_leads'),
                         DB::raw('COUNT(DISTINCT country) as unique_countries'),
                         DB::raw('MIN(first_message_date) as first_interaction'),
                         DB::raw('MAX(last_message_date) as last_interaction'),

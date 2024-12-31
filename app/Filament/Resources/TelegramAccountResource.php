@@ -20,6 +20,12 @@ class TelegramAccountResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user-plus';
 
+    protected static ?string $navigationLabel = 'Telegram Channel';
+    protected static ?string $navigationGroup = 'CRM';
+
+    protected static ?int $navigationSort =  3;
+
+
 
     public static function form(Form $form): Form
     {

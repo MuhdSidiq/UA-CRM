@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\LeadResource\Pages;
-use App\Filament\Resources\LeadResource\RelationManagers;
 use App\Models\Lead;
 use Carbon\Carbon;
 use Filament\Forms;
@@ -19,6 +18,14 @@ class LeadResource extends Resource
     protected static ?string $model = Lead::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
+
+    protected static ?string $navigationGroup = 'CRM';
+
+    protected static ?string $navigationLabel = 'Leads';
+
+    protected static ?int $navigationSort =  1;
+
+
 
     public static function form(Form $form): Form
     {
@@ -95,7 +102,6 @@ class LeadResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
