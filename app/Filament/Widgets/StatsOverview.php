@@ -52,18 +52,20 @@ class StatsOverview extends BaseWidget
 
         return [
             Stat::make('Monthly Leads Performance', $currentMonthLeads)
-                ->description(abs($leadsPercentageChange) . '% ' . ($leadsPercentageChange >= 0 ? 'increase' : 'decrease'))
+                ->description(number_format(abs($leadsPercentageChange), 2) . '% ' . ($leadsPercentageChange >= 0 ? 'increase' : 'decrease'))
                 ->descriptionIcon($leadsPercentageChange >= 0 ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down')
                 ->color($leadsPercentageChange >= 0 ? 'success' : 'danger'),
 
-            Stat::make('Connected Telegram Accounts', $telegramAccountsCount)
-                ->description('Active Channels')
-                ->descriptionIcon('heroicon-m-signal'),
+
 
             Stat::make('Closed Leads This Month', $currentMonthClosedLeads)
                 ->description(abs($closedLeadsPercentageChange) . '% ' . ($closedLeadsPercentageChange >= 0 ? 'increase' : 'decrease'))
                 ->descriptionIcon($closedLeadsPercentageChange >= 0 ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down')
                 ->color($closedLeadsPercentageChange >= 0 ? 'success' : 'danger'),
+
+            Stat::make('Connected Telegram Accounts', $telegramAccountsCount)
+                ->description('Active Channels')
+                ->descriptionIcon('heroicon-m-signal'),
         ];
     }
 }
