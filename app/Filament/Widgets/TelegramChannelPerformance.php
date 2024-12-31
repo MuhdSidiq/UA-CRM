@@ -46,8 +46,8 @@ class TelegramChannelPerformance extends BaseWidget
                     ->label('Unique Chats')
                     ->sortable()
                     ->alignCenter(),
-                Tables\Columns\TextColumn::make('unique_countries')
-                    ->label('Countries Reached')
+                Tables\Columns\TextColumn::make('closed_leads')
+                    ->label('Closed Leads')
                     ->sortable()
                     ->alignCenter(),
                 Tables\Columns\TextColumn::make('first_interaction')
