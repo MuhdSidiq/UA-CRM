@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('country')->nullable();
-            $table->enum('status', ['new', 'f1', 'f2', '50D', 'close', 'cold lead'])->default('new');
+            $table->enum('status', ['new', 'f1', 'f2', '50D', 'close', 'cl','ri' ])->nullable();
             $table->string('username')->nullable(); // is for platform username
             $table->string('platform')->nullable();
             $table->timestamp('first_message_date')->nullable();
