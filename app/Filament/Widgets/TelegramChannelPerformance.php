@@ -51,6 +51,10 @@ class TelegramChannelPerformance extends BaseWidget
                     ->label('Closed Leads')
                     ->sortable()
                     ->alignCenter(),
+                Tables\Columns\TextColumn::make('avg_respond_time')
+                    ->label('Avg Respond Time')
+                    ->sortable()
+                    ->alignCenter(),
                 Tables\Columns\TextColumn::make('first_interaction')
                     ->label('First Activity')
                     ->dateTime('d/m/Y')
