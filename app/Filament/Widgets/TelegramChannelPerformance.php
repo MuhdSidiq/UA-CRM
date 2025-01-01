@@ -30,6 +30,30 @@ class TelegramChannelPerformance extends BaseWidget
                         DB::raw('COUNT(DISTINCT country) as unique_countries'),
                         DB::raw('MIN(first_message_date) as first_interaction'),
                         DB::raw('MAX(last_message_date) as last_interaction'),
+                        // Corrected average response time calculation
+                        DB::raw('(
+                    SELECT COALESCE(
+                        AVG(response_time),
+                        NULL
+                    )
+                    FROM (
+                        SELECT
+                            TIMESTAMPDIFF(
+                                SECOND,
+                                m1.message_timestamp,
+                                MIN(m2.message_timestamp)
+                            ) as response_time
+                        FROM messages m1
+                        LEFT JOIN messages m2 ON
+                            m1.chat_id = m2.chat_id
+                            AND m2.message_timestamp > m1.message_timestamp
+                            AND m2.sender_type = "SALES"
+                        WHERE
+                            m1.sender_type = "LEAD"
+                            AND m1.telegram_account_id = leads.telegram_account_id
+                        GROUP BY m1.id
+                    ) response_times
+                ) as avg_respond_time')
                     ])
                     ->whereNotNull('telegram_account_id')
                     ->groupBy('telegram_account_id')
@@ -53,6 +77,25 @@ class TelegramChannelPerformance extends BaseWidget
                     ->alignCenter(),
                 Tables\Columns\TextColumn::make('avg_respond_time')
                     ->label('Avg Respond Time')
+                    ->formatStateUsing(function ($state) {
+                        if (!$state) return 'N/A';
+
+                        // Convert seconds to human readable format
+                        $minutes = floor($state / 60);
+                        $hours = floor($minutes / 60);
+                        $days = floor($hours / 24);
+
+                        if ($days > 0) {
+                            return "{$days}d " . ($hours % 24) . "h";
+                        }
+                        if ($hours > 0) {
+                            return "{$hours}h " . ($minutes % 60) . "m";
+                        }
+                        if ($minutes > 0) {
+                            return "{$minutes}m";
+                        }
+                        return "< 1m";
+                    })
                     ->sortable()
                     ->alignCenter(),
                 Tables\Columns\TextColumn::make('first_interaction')
