@@ -74,16 +74,6 @@ class LeadResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\SelectColumn::make('status')
-                    ->options([
-                        'new' => 'new',
-                        'f1' => 'f1',
-                        'f2' => 'f2',
-                        '50D' => '50D',
-                        'close' => 'close',
-                        'cl' => 'cl',
-                        'ri' => 'ri'
-                    ]),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('phone_number')

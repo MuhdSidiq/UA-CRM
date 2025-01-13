@@ -15,13 +15,14 @@ return new class extends Migration
             $table->id();
             $table->integer('telegram_account_id')->nullable();
             $table->bigInteger('telegram_chat_id')->nullable();
+            $table->string('telegram_user_id')->nullable()->unique();
             $table->string('telegram_username')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('country')->nullable();
-            $table->enum('status', ['new', 'f1', 'f2', '50D', 'close', 'cl','ri' ])->nullable();
-            $table->string('username')->nullable(); // is for platform username
+            $table->enum('status', ['cold_lead','new', 'f1', 'f2', '50D', 'close', 'cl','ri','internal'])->nullable();
+            $table->string('platform_username')->nullable();
             $table->string('platform')->nullable();
             $table->timestamp('first_message_date')->nullable();
             $table->timestamp('last_message_date')->nullable();
