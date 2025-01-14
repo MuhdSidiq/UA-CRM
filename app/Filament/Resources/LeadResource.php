@@ -67,9 +67,11 @@ class LeadResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('telegramAccount.name')
                     ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Business Channel')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('telegram_chat_id')
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Chat ID'),
                 Tables\Columns\TextColumn::make('telegram_username')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('name')

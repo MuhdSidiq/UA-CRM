@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('telegram_account_id')->nullable();
             $table->bigInteger('telegram_chat_id')->nullable();
-            $table->string('telegram_user_id')->nullable()->unique();
+            $table->string('telegram_user_id')->nullable()->unique(); //senderId in Gram JS.
             $table->string('telegram_username')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();

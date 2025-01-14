@@ -15,7 +15,7 @@ class StatsOverview extends BaseWidget
     {
         // Get current and previous month's data for leads
         $currentMonth = Carbon::now();
-        $lastMonth = Carbon::now()->subMonth();
+        $lastMonth = Carbon::now()->subMonth()->startOfMonth();
 
         // Calculate total leads for current and previous month
         $currentMonthLeads = Lead::whereMonth('created_at', $currentMonth->month)
