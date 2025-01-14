@@ -28,6 +28,12 @@ class ListLeads extends ListRecords
         $counts = $this->getLeadCounts();
 
         return [
+
+            'All' => Tab::make()
+                ->modifyQueryUsing(fn (Builder $query) => $query)
+                ->icon('heroicon-o-sparkles')
+                ->badge(fn () => $counts['new'] ?? 0),
+
             'New' => Tab::make()
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('status', 'new'))
                 ->icon('heroicon-o-sparkles')

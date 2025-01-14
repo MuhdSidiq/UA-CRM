@@ -87,9 +87,10 @@ class LeadResource extends Resource
                 Tables\Columns\TextColumn::make('first_message_date')
                     ->dateTime('d/m/Y, h:i A')
                     ->sortable(),
+
                 Tables\Columns\TextColumn::make('last_message_date')
                     ->dateTime('d/m/Y, h:i A')
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('d/m/Y, h:i A')
                     ->sortable()
