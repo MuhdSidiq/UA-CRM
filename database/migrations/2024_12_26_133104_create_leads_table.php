@@ -15,17 +15,17 @@ return new class extends Migration
             $table->id();
             $table->integer('telegram_account_id')->nullable();
             $table->bigInteger('telegram_chat_id')->nullable();
-            $table->string('telegram_user_id')->nullable()->unique(); //senderId in Gram JS.
+            $table->bigInteger('telegram_user_id')->nullable()->unique(); //userID
             $table->string('telegram_username')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('country')->nullable();
-            $table->enum('status', ['cold_lead','new', 'f1', 'f2', '50D', 'close', 'cl','ri','internal'])->nullable();
+            $table->enum('status', ['cold','new', 'f1', 'f2', '50d', 'closed','recon','internal','existing'])->nullable();
             $table->string('platform_username')->nullable();
             $table->string('platform')->nullable();
-            $table->timestamp('first_message_date')->nullable();
-            $table->timestamp('last_message_date')->nullable();
+            $table->timestamp('first_message_date')->nullable(); //First date message initialed
+            $table->timestamp('last_message_date')->nullable(); // Last communicate date
             $table->timestamps();
 
             // Foreign key
