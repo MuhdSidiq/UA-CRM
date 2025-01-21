@@ -42,6 +42,9 @@ RUN composer install --no-dev --optimize-autoloader
 # Generate key
 RUN php artisan key:generate --force
 
+# Run migrations
+RUN php artisan migrate
+
 # Create storage link
 RUN php artisan storage:link
 
