@@ -56,8 +56,6 @@ class StatsOverview extends BaseWidget
                 ->descriptionIcon($leadsPercentageChange >= 0 ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down')
                 ->color($leadsPercentageChange >= 0 ? 'success' : 'danger'),
 
-
-
             Stat::make('Closed Leads This Month', $currentMonthClosedLeads)
                 ->description(abs($closedLeadsPercentageChange) . '% ' . ($closedLeadsPercentageChange >= 0 ? 'increase' : 'decrease'))
                 ->descriptionIcon($closedLeadsPercentageChange >= 0 ? 'heroicon-m-arrow-trending-up' : 'heroicon-m-arrow-trending-down')

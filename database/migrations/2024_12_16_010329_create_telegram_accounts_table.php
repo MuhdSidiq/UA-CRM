@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('telegram_accounts', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
             $table->string('name')->nullable();
-            $table->string('phone_number', 20)->unique();
+            $table->string('phone_number', 20);
             $table->string('api_id', 20);
             $table->string('api_hash', 100);
             $table->boolean('is_active')->default(false);
