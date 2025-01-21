@@ -16,18 +16,12 @@ while ! mysqladmin ping -h"$DB_HOST" -u"$DB_USERNAME" -p"$DB_PASSWORD" --silent;
     fi
 done
 
-# Start nginx
-echo "[$(date)] Starting nginx..."
-nginx
-
-# Run migrations (ignore errors)
 echo "[$(date)] Running migrations..."
-php artisan migrate --force || true
+php artisan migrate --force || {
+    echo "Migration failed!"
+    exit 1
+}
 
-# Run seeders (ignore errors)
-echo "[$(date)] Running seeders..."
-php artisan db:seed --force || true
-
-# Start PHP-FPM
-echo "[$(date)] Starting PHP-FPM..."
-exec php-fpm --nodaemonize
+# Start Apache in foreground
+echo "[$(date)] Starting Apache..."
+apache2-foreground

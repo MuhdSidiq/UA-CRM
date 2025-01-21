@@ -42,12 +42,6 @@ RUN composer install --no-dev --optimize-autoloader
 # Generate key
 RUN php artisan key:generate --force
 
-# Run migrations
-RUN php artisan migrate
-
-# Create storage link
-RUN php artisan storage:link
-
 # Install and build frontend assets
 RUN npm install
 RUN npm run build
@@ -58,3 +52,9 @@ RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Update Apache configuration
 RUN sed -i 's/DocumentRoot \/var\/www\/html/DocumentRoot \/var\/www\/html\/public/g' /etc/apache2/sites-available/000-default.conf
+
+# Create a simple entrypoint script for migrations
+RUN echo '#!/bin/bash\nphp artisan migrate --force\napache2-foreground' > /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
