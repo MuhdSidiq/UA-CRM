@@ -28,4 +28,9 @@ class TelegramAccount extends Model
     {
         return $this->hasMany(Chat::class, 'telegram_account_id');
     }
+
+    public function dailyReports(): HasMany
+    {
+        return $this->hasMany(DailyAccountReport::class, 'telegram_account_id');
+    }
 }
